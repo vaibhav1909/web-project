@@ -1,7 +1,155 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% load static %}
-<html>
-    <body>
-        hello world
-    </body>
-</html>
+
+
+{% block content%}
+
+    <!-- Hero section -->
+    <section class="hero-section">
+        <div class="hero-slider owl-carousel">
+            <div class="hs-item set-bg" style="height: 100%" data-setbg="{% static './img/bg-1.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 text-white">
+                            <h2>engine oil</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" style="height: 100%" data-setbg="{% static './img/bg-2.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 text-white">
+                            <h2>engine oil</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" style="height: 100%" data-setbg="{% static './img/bg-3.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 text-white">
+                            <h2>engine oil</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" style="height: 100%" data-setbg="{% static './img/bg-4.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 text-white">
+                            <h2>engine oil</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" style="height: 100%" data-setbg="{% static './img/bg-5.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 text-white">
+                            <h2>engine oil</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section end -->
+
+    <!-- letest product section -->
+    <section class="top-letest-product-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>LATEST PRODUCTS</h2>
+            </div>
+            <div class="product-slider owl-carousel">
+                {% for llisting in llistings %}
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="{{ llisting.product_image.url }}" alt="">
+                            <div class="pi-links">
+                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text">
+                            <h6>${{ llisting.product_price | intcomma}}</h6>
+                            <p>{{ llisting.product_name }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+    <!-- letest product section end -->
+
+
+
+    <!-- Product filter section -->
+    <section class="product-filter-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>BROWSE TOP SELLING PRODUCTS</h2>
+            </div>
+            <div class="row">
+                
+                {% for listing in listings %}
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <a href="{% url 'product' listing.product_id %}">
+                                    <img src="{{ listing.product_image.url }}" alt="">
+                                </a>
+                                <div class="pi-links">
+                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>${{ listing.product_price | intcomma}}</h6>
+                                <a href="{% url 'product' listing.product_id %}">
+                                    <p>{{ listing.product_name }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>   
+            <div class="text-center pt-5">
+                <button class="site-btn sb-line sb-dark">LOAD MORE</button>
+            </div>
+        </div>
+    </section>
+    <!-- Product filter section end -->
+
+
+    <!-- Banner section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner set-bg" data-setbg="{% static './img/banner-bg.jpg' %}">
+                <div class="tag-new">NEW</div>
+                <span>Best In Class</span>
+                <h2>Give boost to your vehicle</h2>
+                <a href="#" class="site-btn">SHOP NOW</a>
+            </div>
+        </div>
+    </section>
+    <!-- Banner section end  -->
+
+
+{% endblock %}
+
+
+

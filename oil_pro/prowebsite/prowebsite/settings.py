@@ -32,14 +32,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
-    'products.apps.ProductsConfig',
     'customers.apps.CustomersConfig',
+    'products.apps.ProductsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,13 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'prowebsite/static')
 ]
 
+#Media 
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
+#email config
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587      #SSL 465 # TLS 587
+EMAIL_HOST_USER='projecttest76@gmail.com'
+EMAIL_HOST_PASSWORD='project@1234'
+EMAIL_USE_TLS=True
